@@ -1460,16 +1460,17 @@ def get_argument_parser(profile=None):
             "to the working directory."
         ),
     )
-
-    try:
-        import pulp
-
-        lp_solvers = pulp.list_solvers(onlyAvailable=True)
-    except ImportError:
-        # Dummy list for the case that pulp is not available
-        # This only happend when building docs.
-        lp_solvers = ["COIN_CMD"]
+    lp_solvers = ["COIN_CMD"]
     recommended_lp_solver = "COIN_CMD"
+    # try:
+    #     import pulp
+
+    #     lp_solvers = pulp.list_solvers(onlyAvailable=True)
+    # except ImportError:
+    #     # Dummy list for the case that pulp is not available
+    #     # This only happend when building docs.
+    #     lp_solvers = ["COIN_CMD"]
+    # recommended_lp_solver = "COIN_CMD"
 
     group_exec.add_argument(
         "--scheduler",
